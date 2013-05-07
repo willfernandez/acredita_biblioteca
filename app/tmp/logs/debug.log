@@ -172,3 +172,4 @@
 2012-11-13 08:44:13 Notice: Notice (8): Undefined index: fecha_devolu in [/home/acredita/public_html/biblioteca/app/views/reservas/index.ctp, line 246]
 2013-05-07 19:26:00 Debug: Notice (8): Undefined variable: password in [C:\xampp\htdocs\biblioteca\app\app_controller.php, line 14]
 2013-05-07 19:26:00 Debug: Notice (8): Undefined variable: password in [C:\xampp\htdocs\biblioteca\app\app_controller.php, line 14]
+2013-05-08 00:19:47 Debug: Notice (8): Undefined index: Alumno in [C:\xampp\htdocs\biblioteca\app\app_controller.php, line 18]

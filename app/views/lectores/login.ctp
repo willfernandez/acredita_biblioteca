@@ -9,8 +9,8 @@
 			<?php echo $this->Session->flash('auth'); ?>
 			<?php echo $this->Form->create('Lectore',array('action'=>'login'));
 			echo '<fieldset>';
-			echo $this->Form->input('codigo',array('label'=>'Codigo:','class'=>'input-xlarge-fluid','div'=>'control-group','between'=>'<div class="controls"><div class="input-prepend"><span class="add-on"><i class="icon-large icon-user"></i></span>','after'=>'</div></div>'));
-			echo $this->Form->input('dni',array('label'=>'Dni:','class'=>'input-xlarge-fluid','div'=>'control-group','between'=>'<div class="controls"><div class="input-prepend"><span class="add-on"><i class="icon-large icon-lock"></i></span>','after'=>'</div></div>'));
+			echo $this->Form->input('Alumno.codigo',array('label'=>'Codigo:','class'=>'input-xlarge-fluid','div'=>'control-group','between'=>'<div class="controls"><div class="input-prepend"><span class="add-on"><i class="icon-large icon-user"></i></span>','after'=>'</div></div>'));
+			echo $this->Form->input('Alumno.dni',array('label'=>'Dni:','class'=>'input-xlarge-fluid','div'=>'control-group','between'=>'<div class="controls"><div class="input-prepend"><span class="add-on"><i class="icon-large icon-lock"></i></span>','after'=>'</div></div>'));
 			echo '<div>';
 			echo $this->Form->button('Iniciar Sesión',array('type'=>'submit','class'=>'btn btn-primary'));	
 			echo '</div>';
@@ -21,4 +21,3 @@
 	</div>
 </div>
 	
-

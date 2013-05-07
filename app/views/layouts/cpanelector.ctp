@@ -30,7 +30,7 @@
 			<a href="#" class="brand">Sistema Biblioteca</a>
 			<div class="nav-collapse collapse">
 				<p class="navbar-text pull-right">Logeado como
-					<!--<a class="navbar-link" href="#"><?php echo $session->read('Auth.Alumno.nombres').' '.$session->read('Auth.Alumno.apellidos') ?></a> -->
+					<a class="navbar-link" href="#"><?php echo $session->read('Auth.Alumno.nombres').' '.$session->read('Auth.Alumno.apellidos') ?></a> 
 				</p>
 				<ul class="nav">
 					<li class="active"><?php echo $this->Html->link('Panel','/lectores');?></li>
@@ -50,7 +50,7 @@
 					<div align="center"><?php echo $this->Html->image('logo_admin.png',array('class'=>'member-box-avatar'));?></div>
 					<span>
 						<strong>Lector</strong><br>
-					<!--	<a><?php echo $session->read('Auth.Alumno.nombres').' '.$session->read('Auth.Alumno.apellidos') ?></a><br> -->
+						<a><?php echo $session->read('Auth.Alumno.nombres').' '.$session->read('Auth.Alumno.apellidos') ?></a><br> 
 						
 						<span class="member-box-links"> <?php echo $this->Html->link('Salir',array('controller'=>'lectores','action'=>'logout'));?></span>
 					</span><!--<?php echo $this->Html->link('Configuración','/lectores/editar/'.$this->Session->read('Auth.Lectore.id')); ?> |-->

@@ -14,5 +14,17 @@ class DATABASE_CONFIG {
 		
 	);
 
+	var $bienestar = array(
+		'driver' => 'mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => '',
+		'database' => 'acredita_bienestar',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+		
+	);
+
 	
 }

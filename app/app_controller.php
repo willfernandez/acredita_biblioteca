@@ -6,6 +6,7 @@ class AppController extends Controller{
 	
 	function _authlectores(){
 		//Configurar Auth para trabajar con modelo lectores
+		Security::setHash('bienestar');
 		$this->Auth->userModel = 'Alumno';
 		$this->Auth->fields = array(
 			'username' => 'codigo',
@@ -15,7 +16,7 @@ class AppController extends Controller{
 		$this->Auth->logoutRedirect = array('controller' => 'lectores', 'action' => 'login');
 		$this->Auth->loginRedirect = array('controller' => 'lectores', 'action' => 'index');
 		$this->Auth->authError = 'Está intentando ingresar a una Área restringida.';
-		$this->Auth->loginError = 'Los datos ingresados son incorrectos';
+		$this->Auth->loginError ='Los datos ingresados son incorrectos';
 	}
 	
 	function _authusuarios(){

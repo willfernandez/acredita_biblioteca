@@ -2,12 +2,12 @@
 class LectoresController extends AppController {
 
 	public $name = 'Lectores';
-	public $uses = array('Lectore','Personal','Categoria','Texto','Prestamo','Ejemplare');
+	public $uses = array('Categoria','Texto','Prestamo','Ejemplare');
 	
 	function beforeFilter() {
 		$this->_authlectores();
 		$this->layout = 'cpanelector';
-		$this->Auth->allow('add_lector');
+		//$this->Auth->allow('add_lector');
     }
 	
 	function login(){
@@ -20,9 +20,9 @@ class LectoresController extends AppController {
 	}
 	
 	function index(){
-		/*$id_lector = $this->Session->read('Auth.Alumno.id');
+		$id_lector = $this->Session->read('Auth.Alumno.id');
 		// Obtiene reservas por cada biblioteca
-		$masprestados = $this->Prestamo->query("SELECT p.id, t.id,p.ejemplare_id, SUM(t.id) AS suma ,t.imagen,t.titulo, t.autor, p.fecha_prestamo, p.estado 
+		$masprestados = $this->Prestamo->query("SELECT p.id, t.id,p.ejemplare_id, COUNT(t.id) AS suma ,t.imagen,t.titulo, t.autor, p.fecha_prestamo, p.estado 
 												FROM prestamos p
 												INNER JOIN ejemplares e ON p.ejemplare_id=e.id
 												INNER JOIN textos t ON e.texto_id=t.id 
@@ -35,7 +35,7 @@ class LectoresController extends AppController {
 		$revistas = $this->Texto->find('all',array('conditions'=>array('Texto.categoria_id'=>3),'order'=>'Texto.id DESC','limit'=>10));
 		$informes = $this->Texto->find('all',array('conditions'=>array('Texto.categoria_id'=>2),'order'=>'Texto.id DESC','limit'=>10));
 		
-		$this->set(compact('textos','libros','tesis','revistas','informes','masprestados'));*/
+		$this->set(compact('textos','libros','tesis','revistas','informes','masprestados'));
 	}
 	
 	function catalogo(){
@@ -91,14 +91,14 @@ class LectoresController extends AppController {
 	}
 	
 	function archivos(){
-		$id=$this->Session->read('Auth.Lectore.id');
+		$id=$this->Session->read('Auth.Alumno.id');
 		$this->Texto->Behaviors->attach('Containable');
 		$this->Texto->contain('Usuario','Lectore','Categoria');
 		$this->set('textos',$this->Texto->find('all',array('conditions'=>array('Texto.nombre_archivo !='=>null,'Texto.lectore_id'=>$id))));
 	}
 	
 	function reservas(){
-		$id_lector = $this->Session->read('Auth.Lectore.id');
+		$id_lector = $this->Session->read('Auth.Alumno.id');
 		$reservas = $this->Prestamo->query("SELECT p.id,e.codigo, titulo, autor,fecha_reserva,nombre_biblioteca FROM prestamos AS p 
 											INNER JOIN ejemplares AS e ON p.ejemplare_id = e.id
 											INNER JOIN textos AS t ON t.id = e.texto_id 
@@ -114,7 +114,7 @@ class LectoresController extends AppController {
 	
 	function crearficha($id=null){
 		if (!empty($this->data)) {
-			$this->data['Prestamo']['lectore_id'] = $this->Session->read('Auth.Lectore.id');
+			$this->data['Prestamo']['lectore_id'] = $this->Session->read('Auth.Alumno.id');
 			$this->data['Prestamo']['fecha_reserva'] = $this->fecha_hora();
 			$this->data['Prestamo']['sancione_id'] = 1;
 			$this->data['Prestamo']['estado'] = 0;
@@ -156,7 +156,7 @@ class LectoresController extends AppController {
 			$this->Texto->create();
 			$this->data['Texto']['fecha_archivo'] = $this->fecha_hora();
 			$this->data['Texto']['formato'] = 'digital';
-			$this->data['Texto']['lectore_id'] = $this->Session->read('Auth.Lectore.id');
+			$this->data['Texto']['lectore_id'] = $this->Session->read('Auth.Alumno.id');
 			$this->data['Texto']['imagen'] = $this->data['Texto']['archivo_imagen']['name'];
 			$this->data['Texto']['nombre_archivo'] = $this->data['Texto']['archivo']['name'];
 			$this->data['Texto']['size_archivo'] = $this->data['Texto']['archivo']['size'];
@@ -219,7 +219,7 @@ class LectoresController extends AppController {
 		if (!empty($this->data)) {
 			$this->Texto->create();
 			$this->data['Texto']['fecha_archivo'] = $this->fecha_hora();
-			$this->data['Texto']['lectore_id'] = $this->Session->read('Auth.Lectore.id');
+			$this->data['Texto']['lectore_id'] = $this->Session->read('Auth.Alumno.id');
 			
 			$this->Texto->recursive = -1;
 			$texto = $this->Texto->read(null,$id);
@@ -265,7 +265,7 @@ class LectoresController extends AppController {
 	
 	function sanciones(){	
 		
-		$id_lector = $this->Session->read('Auth.Lectore.id');
+		$id_lector = $this->Session->read('Auth.Alumno.id');
 		$sanciones = $this->Prestamo->query("SELECT s.nombre_sancion,s.grado,e.id, e.codigo, t.titulo, t.autor, b.nombre_biblioteca, p.fecha_prestamo,p.fecha_entrega,p.fecha_devolucion, p.estado, s.costo
 											FROM prestamos p
 											INNER JOIN ejemplares e ON p.ejemplare_id=e.id

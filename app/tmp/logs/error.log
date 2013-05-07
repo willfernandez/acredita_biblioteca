@@ -134,3 +134,5 @@
 2013-05-07 19:33:29 Warning: Warning (2): hash() [<a href='http://php.net/function.hash'>function.hash</a>]: Unknown hashing algorithm: bienestar in [C:\xampp\htdocs\biblioteca\cake\libs\security.php, line 144]
 2013-05-07 19:35:09 Warning: Warning (2): hash() [<a href='http://php.net/function.hash'>function.hash</a>]: Unknown hashing algorithm: bienestar in [C:\xampp\htdocs\biblioteca\cake\libs\security.php, line 144]
 2013-05-07 19:35:54 Warning: Warning (2): hash() [<a href='http://php.net/function.hash'>function.hash</a>]: Unknown hashing algorithm: bienestar in [C:\xampp\htdocs\biblioteca\cake\libs\security.php, line 144]
+2013-05-08 00:46:06 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND p.sancione_id > 1' at line 7</span> in [C:\xampp\htdocs\biblioteca\cake\libs\model\datasources\dbo_source.php, line 684]
+2013-05-08 00:46:06 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\biblioteca\app\views\lectores\sanciones.ctp, line 48]
